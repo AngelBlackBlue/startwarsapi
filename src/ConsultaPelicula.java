@@ -8,7 +8,7 @@ import java.net.http.HttpResponse;
 
 public class ConsultaPelicula {
 
-    Pelicula buscaPelicula (int numeroDeLaPelicula){
+    public Pelicula buscaPelicula (int numeroDeLaPelicula){
 
         URI direccion = URI.create("https://swapi.py4e.com/api/films/" + numeroDeLaPelicula);
 
@@ -24,7 +24,7 @@ public class ConsultaPelicula {
                     .send(request, HttpResponse.BodyHandlers.ofString());
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
-        } 
+        }
 
         return new Gson().fromJson(response.body(), Pelicula.class);
     }
